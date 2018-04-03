@@ -23,7 +23,7 @@
     <header> 
       <!-- Fixed navbar -->
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">Aplicación Usuario</a>
+        <a class="navbar-brand" href="#">Administrar Contactos</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -31,13 +31,13 @@
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
   
-              <a class="nav-link" href="{{ url('usuarios') }}" > Usuarios <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="{{ url('contactos/listar') }}" > Contactos <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ url('usuarios/nuevo') }}">Nuevo Usuario</a>
+              <a class="nav-link" href="{{ url('contacto/crear') }}"> Crear</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled" href="#">Detalle</a>
+              <a class="nav-link " href="#">Detalle</a>
             </li>
           </ul>
           <form class="form-inline mt-2 mt-md-0">

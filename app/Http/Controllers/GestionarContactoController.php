@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Contactos;
 use Illuminate\Validation\Rule;
 
+use \App\Models\Contactos as Cont;
+
 class GestionarContactoController extends Controller
 {
     //
@@ -14,8 +16,8 @@ class GestionarContactoController extends Controller
      function Form()
           {
 
-                $pais = \App\Models\Pais::all();//Instanciando la clase directamente para obtener los datos
-                $tipo = \App\Models\Tipocontacto::all();//Instanciando la clase directamente para obtener los datos
+                $pais = \App\Models\Pais::all();
+                $tipo = \App\Models\Tipocontacto::all();
                 
           
       	     return view("crearContacto",compact('pais','tipo'));
@@ -57,13 +59,85 @@ class GestionarContactoController extends Controller
 
 
 				      		]);
-				// Rutas renombradas 
-				      	return "Usuario Guardado correctamente";
-				      //	return redirect()->route('');
-				      	//return redirect('usuarios');
-
-
-
+				
+      	return redirect()->route('contactos');
+				      	
           }
+
+function listarContactos()
+{ 
+          $contactos = \App\Models\Contactos::all();
+
+          $title = 'Contactos';
+
+return view('mostrarContactos',compact('contactos','title'));
+
+return view('Usuario')
+          ->with('user', \App\User::all())
+          ->with('title',$title);
+
+//Comprobar que compact convierte las var en un array asociativo
+dd(compact('user','title')); 
+
+}
+
+	function borrarUsuario(Contactos $user)
+		{
+            
+            $user->delete();
+
+			return redirect()->route('contactos');
+		}     	
+
+
+public function editarContacto(Contactos $user)
+          {
+             
+
+                $pais = \App\Models\Pais::all();
+                $tipo = \App\Models\Tipocontacto::all();
+
+          	 return view('editarContacto',['contacto'=>$user,'pais'=>$pais,'tipo'=>$tipo]);
+          
+
+          } 
+
+
+function actualizarContacto(Request $cont)   
+	     	{
+              //  dd($usuario->id_usuario);
+	     		//$data = request()->all();
+/*
+	     		    $data = request()->validate([
+                     'nombre'=>'required',
+                     'correo'=> ['required','email', Rule::unique('contactos','email')->ignore($user->id_cont,'id_cont')], 
+   
+	     			]);
+
+	     		$data->update(); */
+             
+             
+
+                
+	     		//return redirect()->route('Detalle.Usuario',['user'=>$usuario]);//redirect();
+
+                // unset($usuario->password); //Elimina del array el atributo password
+                  
+	     		$obj = Contactos::findOrFail($cont->id_cont);
+
+	     		$obj->pri_nombre     = $cont->nombre;
+	     		$obj->pri_apellido    = $cont->apellido;
+                $obj->email = $cont->correo;
+                $obj->telefono = $cont->telefono;
+                
+	     		$obj->update();
+          
+
+			return redirect()->route('contactos');
+                
+
+	     	}
+
+
 
 }

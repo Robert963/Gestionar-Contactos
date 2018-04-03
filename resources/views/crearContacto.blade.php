@@ -101,10 +101,10 @@
 						   <option value='{{ $p->id_pais }}'> {{ $p->nombre }} </option>
 						 @endforeach
 				</select>
-				
+
             </div>	
 					    	
-				<button type="submit" class="btn btn-primary"> Registrar </button>
+				<button type="submit" class="btn btn-primary"> Registrar</button>
 
        </form>
 
@@ -117,6 +117,6 @@
          
 @section('NuevaSeccion')
    
-  <a href="{{ url('usuarios') }}" class="btn btn-link"> >> LISTAR CONTACTOS</a>
+  <a href="{{ url('contactos/listar') }}" class="btn btn-link"> >> LISTAR CONTACTOS</a>
         
 @endsection 
