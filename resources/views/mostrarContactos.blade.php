@@ -8,8 +8,8 @@
 
 <a href="{{ url('contacto/crear') }}"> Registrar Nuevo Contacto </a>
    
-<ul>
-<?php foreach ($contactos as $key => $contacto): ?>
+</br></br>
+<?php $i=0; foreach ($contactos as $key => $contacto):  ?>
     <div class="row xl">                   
                         
                 <div class="col-2">    
@@ -28,9 +28,15 @@
                       <?php echo e($contacto->telefono) ?>  
                 </div>
                 <div class="col-1">    
-                      <?php echo e($contacto->id_tipo) ?>  
+                      <?php echo e($reg[$i]->nombre) ?>  
                 </div>
 
+                 <div class="col-1"> 
+                      
+                      <?php echo e($tip[$i]->tipo)  ?>  
+                   
+                  </div>
+                    
                         
               <div class="col-1">  <a href="{{ url('/editar/'.$contacto->id_cont) }}">Editar                             </a>  </div>
               <div class="col-1">  <a href="{{ url('contacto/crear')  }}"> Crear  </a>  </div>
@@ -47,13 +53,13 @@
                 </form>
               
               </div>
+             
               
 
     </div>                   
-        
-</ul>
+      
 
-<?php endforeach ?>
+<?php $i=$i+1; endforeach ?>
 
          
 @include('Part\pie') 

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Contactos;
+use App\Models\Pais;
+use App\Models\Tipocontacto;
+
 use Illuminate\Validation\Rule;
 
 use \App\Models\Contactos as Cont;
@@ -69,15 +72,21 @@ function listarContactos()
           $contactos = \App\Models\Contactos::all();
 
           $title = 'Contactos';
+          $reg = [];
+          $i=0;
+          $tip =[];
 
-return view('mostrarContactos',compact('contactos','title'));
+foreach ($contactos as $cont) {
+	 
+	 $reg[$i] = Pais::find($cont->id_pais);
+	 $tip[$i] = Tipocontacto::find($cont->id_tipo);
 
-return view('Usuario')
-          ->with('user', \App\User::all())
-          ->with('title',$title);
+	 $i=$i+1;
+}
 
-//Comprobar que compact convierte las var en un array asociativo
-dd(compact('user','title')); 
+
+return view('mostrarContactos',compact('contactos','title','reg','tip'));
+
 
 }
 
@@ -105,23 +114,6 @@ public function editarContacto(Contactos $user)
 
 function actualizarContacto(Request $cont)   
 	     	{
-              //  dd($usuario->id_usuario);
-	     		//$data = request()->all();
-/*
-	     		    $data = request()->validate([
-                     'nombre'=>'required',
-                     'correo'=> ['required','email', Rule::unique('contactos','email')->ignore($user->id_cont,'id_cont')], 
-   
-	     			]);
-
-	     		$data->update(); */
-             
-             
-
-                
-	     		//return redirect()->route('Detalle.Usuario',['user'=>$usuario]);//redirect();
-
-                // unset($usuario->password); //Elimina del array el atributo password
                   
 	     		$obj = Contactos::findOrFail($cont->id_cont);
 

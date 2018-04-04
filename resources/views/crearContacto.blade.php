@@ -48,7 +48,7 @@
 		    <div class=" form-group">
 			   <label for="apellido"> Apellido: </label>
 		       <input type="text" name="apellido" id="apellido" placeholder="Perez" value="{{ old('apellido') }}" class="form-control"> 
-				@if($errors->has('nombre'))
+				@if($errors->has('apellido'))
                     <p>  {{ $errors->first('apellido')  }} </p>
 				@endif
 		    </div>
@@ -57,8 +57,8 @@
 		    <div class=" form-group">
 			   <label for="telefono"> Teléfono: </label>
 		       <input type="text" name="telefono" id="telefono" placeholder="83755669" value="{{ old('telefono') }}" class="form-control"> 
-				@if($errors->has('nombre'))
-                    <p>  {{ $errors->first('apellido')  }} </p>
+				@if($errors->has('telefono'))
+                    <p>  {{ $errors->first('telefono')  }} </p>
 				@endif
 		    </div>
 
@@ -98,7 +98,7 @@
 
 				<select id="id_pais" name="id_pais" class="form-control">
 						 @foreach($pais as $p)
-						   <option value='{{ $p->id_pais }}'> {{ $p->nombre }} </option>
+						   <option value="{{ $p->id_pais }}" > {{ $p->nombre }} </option>
 						 @endforeach
 				</select>
 

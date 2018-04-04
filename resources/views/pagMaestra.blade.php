@@ -36,8 +36,9 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ url('contacto/crear') }}"> Crear</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link " href="#">Detalle</a>
+            <li class="nav-item active">
+              <a class="nav-link " href="{{ url('pais/listar') }}">Listar Paises</a>
+              
             </li>
           </ul>
           <form class="form-inline mt-2 mt-md-0">

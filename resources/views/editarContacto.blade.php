@@ -128,6 +128,6 @@
          
 @section('NuevaSeccion')
    
-  <a href="{{ url('contactos/listar') }}" class="btn btn-link"> >> LISTAR CONTACTOS</a>
+  <a href="{{ url('contactos/listar') }}" class="btn btn-link"> >> LISTAR CONTACTOS </a>
         
 @endsection 

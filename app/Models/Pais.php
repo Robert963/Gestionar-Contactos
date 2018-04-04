@@ -10,4 +10,7 @@ class Pais extends Model
     public $timestamps = false;
     
     protected $primaryKey = 'id_pais';
+
+    protected $fillable = ['nombre'];
+
 }
